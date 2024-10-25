@@ -60,6 +60,6 @@ public class Employee {
     }
     @Override
     public String toString() {
-        return String.format("%s %s %.2f %.2f %s",firstName,lastName,hoursWorked,payRate,super.toString());
+        return String.format("%s %s %.2f %.2f",firstName,lastName,hoursWorked,payRate);
     }
 }
