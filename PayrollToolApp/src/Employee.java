@@ -1,14 +1,8 @@
-import java.util.ArrayList;
-/**
- * models an employee of the organization
- * It stores the first and last names, hours worked, and hourly rate for an employee
- */
 public class Employee {
     private String firstName;
     private String lastName;
     private double hoursWorked;
     private double payRate;
-    private ArrayList<String> responsibilities;
     public double getHoursWorked() {
         return hoursWorked;
     }
@@ -59,25 +53,9 @@ public class Employee {
         setLastName(last);
         setHoursWorked(hoursWorked);
         setPayRate(payRate);
-        responsibilities = new ArrayList<String>();  // composition
-    }
-    public void addResponsibility(String resp) {
-        responsibilities.add(resp);
-    }
-    public void removeAllResponsibilities() {
-        responsibilities.clear();
-    }
-    public String getResponsibilitiesAsString() {
-        String result = "";
-        for (String resp : responsibilities) {
-            result = result + resp + "\n";
-        }
-        return result;
-    }
-
+    }    
     @Override
     public String toString() {
-        return String.format("%s %s %.2f %.2f\n%s",firstName,lastName,hoursWorked,
-            payRate,getResponsibilitiesAsString());
+        return String.format("%s %s %.2f %.2f\n%s",firstName,lastName,hoursWorked,payRate);
     }
 }
