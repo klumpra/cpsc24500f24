@@ -56,6 +56,6 @@ public class Employee {
     }    
     @Override
     public String toString() {
-        return String.format("%s %s %.2f %.2f\n%s",firstName,lastName,hoursWorked,payRate);
+        return String.format("%s %s %.2f %.2f",firstName,lastName,hoursWorked,payRate);
     }
 }
