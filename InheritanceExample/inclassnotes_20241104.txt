@@ -1,0 +1,54 @@
+Inheritance 
+Polymorphism
+
+Inheritance
+Two kinds
+	"is a"		extends	
+	"acts like"	implements
+
+Inherit means to have all the data and methods of your ancestor
+- you inherit even the private data but you don't have direct access to it.
+
+private and public 	
+protected is a middle ground - the descendants have direct access to the ancestor's protected data and functions
+
+ancestor - superclass
+descendants - subclasses
+
+public class Subclass extends SuperClass {
+	// automatically the subclass has all the data and all the functions of the superclass
+	// including the private data and methods, although I don't have direct access to those
+	// as a Subclass, I do have direct access to any public or protected data or methods of my superclass
+	add on any pieces of data that you bring to the table
+	add on any methods/functions that you bring to the table
+	override any methods / functions that you do differently from your superclass
+}
+
+Certain superclasses are too vague to actually build an object for.
+They're too vague to spell out all of the functions.
+Such superclasses are abstract.
+An abstract class is one where at least on method can't be spelled out. Such functions are called abstract methods
+You cannot create any objects whose data type is abstract.
+
+Shape sh = new Shape();  <--- this is not legal
+
+public class Circle extends Shape {
+	// override the abstract methods of Shape in here so that I can create Circle objects
+}
+
+
+super(list,of,params) calls the superclass's constructor to initialize those parts of the class that
+are native to the superclass.
+
+use "super.methodName" to access the superclass's version of that method.
+
+
+
+
+
+
+
+
+
+
+
