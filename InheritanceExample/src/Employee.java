@@ -52,6 +52,6 @@ public class Employee extends Person {
     @Override
     public String toString() {
 //        return String.format("%s %s %.2f %.2f\n%s",getFirstName(),getLastName(),hoursWorked,payRate);
-        return String.format("%s\t%.2f\t%.2f",super.toString(),hoursWorked,payRate);
+        return String.format("%s\t%.2f\t%.2f",super.toString(),hoursWorked,payRate); 
     }
 }
