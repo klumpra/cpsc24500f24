@@ -1,4 +1,4 @@
-public abstract class Shape {
+public abstract class Shape implements Comparable<Shape> {
     private String name;
     private Point origin;
     public static int count = 0;
@@ -37,10 +37,16 @@ public abstract class Shape {
         count = count + 1;
     }
     public abstract String getType();
+    public abstract String getDimensionsAsString();
     @Override
     public String toString() {
-        return String.format("%s\t%s\t%s",getType(),name,origin.toString());
+        return String.format("%s\t%s\t%s\t%s\t%.2f\t%.2f",
+            getType(),name,origin.toString(),getDimensionsAsString(),calculateArea(),calculatePerimeter());
     }
     public abstract double calculateArea();
     public abstract double calculatePerimeter();
+    @Override
+    public int compareTo(Shape other) {
+        return name.compareTo(other.name);
+    }
 }

@@ -42,7 +42,7 @@ public class Rectangle extends Shape {
         return "rectangle";
     }
     @Override
-    public String toString() {
-        return String.format("%s\t%.2f\t%.2f",super.toString(),length,width);
+    public String getDimensionsAsString() {
+        return String.format("%.2f\t%.2f",length,width);
     }
 }

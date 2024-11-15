@@ -18,8 +18,8 @@ public class Circle extends Shape {
         setRadius(radius);
     }
     @Override
-    public String toString() {
-        return String.format("%s\t%.2f",super.toString(),radius);
+    public String getDimensionsAsString() {
+        return String.format("%.2f",radius);
     }
     @Override
     public String getType() {
