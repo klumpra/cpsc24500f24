@@ -19,11 +19,18 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFileChooser;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
+import java.io.PrintWriter;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class MyFrame extends JFrame {
     private JTextArea tarStory;
+    private ArrayList<String> words;
+    private RandomWordChooser rwc;
     public void setupMenu() {
         JMenuBar mbar = new JMenuBar();
         setJMenuBar(mbar);
@@ -36,6 +43,8 @@ public class MyFrame extends JFrame {
                 JFileChooser chooser = new JFileChooser();
                 if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                     try {
+                        words = WordFileReader.readWords(chooser.getSelectedFile());                 
+/*
                         Scanner fsc = new Scanner(chooser.getSelectedFile());
                         String text = "";
                         String line;
@@ -45,6 +54,7 @@ public class MyFrame extends JFrame {
                         }
                         fsc.close();
                         tarStory.setText(text);
+*/
                     } catch (Exception ex) {
                         JOptionPane.showMessageDialog(null,"An error occurred.");
                     }
@@ -52,6 +62,24 @@ public class MyFrame extends JFrame {
             }
         });
         mnuFile.add(miOpen);
+        JMenuItem miSave = new JMenuItem("Save");
+        miSave.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    JFileChooser chooser = new JFileChooser();
+                    if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                        PrintWriter pw = new PrintWriter(new BufferedWriter(
+                            new FileWriter(chooser.getSelectedFile())));
+                        pw.println(tarStory.getText());
+                        pw.close();
+                        JOptionPane.showMessageDialog(null,"File was saved.");
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,"An error occurred trying to write to the file.");
+                }
+            }
+        });
+        mnuFile.add(miSave);
         JMenuItem miClear = new JMenuItem("Clear");
         miClear.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -93,6 +121,16 @@ public class MyFrame extends JFrame {
             }
         });
         JButton btnTwo = new JButton("two");
+        btnTwo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (words != null) {
+                    String randomWord = rwc.chooseWordFromList(words);
+                    tarStory.setText(tarStory.getText() + randomWord + " ");
+                } else {
+                    JOptionPane.showMessageDialog(null,"Hey dummy - you need to load the words first.");
+                }
+            }
+        });
         JButton btnThree = new JButton("three");
         JButton btnFour = new JButton("four");
         panEast.add(btnOne);
@@ -133,6 +171,8 @@ public class MyFrame extends JFrame {
     }
     */
     public MyFrame() {
+        words = null;
+        rwc = new RandomWordChooser();
         setupGUI();
     }
 }
